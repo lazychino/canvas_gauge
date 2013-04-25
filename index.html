@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta name="author" content="Pedro A. Melendez" />
+	<style>
+		body {
+			background:#7F7F7F;
+		}
+		div {
+			display:block;
+		}
+		canvas {
+			margin: 10px auto;
+		}
+	</style>
+	<script src='gauge2.js'></script>
+	<script>
+		window.onload = function() {
+			var gauge1 = new Gauge("canvas", { 'range': {'min':-50, 'max':50 } });
+			var gauge2 = new Gauge("canvas2");
+			var gauge3 = new Gauge("canvas3", {'mode':'needle', 'range': {'min':-30, 'max':30 } });
+			var gauge4 = new Gauge("canvas4", {'mode':'needle', 'range': {'min':0, 'max':140 } });
+			
+			function randomTest() {
+				gauge1.draw( Math.floor(Math.random()*100)-50 );
+				gauge2.draw( Math.floor(Math.random()*100) );
+				gauge3.draw( Math.floor(Math.random()*60)-30 );
+				gauge4.draw( Math.floor(Math.random()*140) );
+			}
+			
+			randomTest();
+			
+			var run = setInterval(randomTest, 1000);
+		};
+	</script>
+	<title>Canvas Guage alpha</title>
+</head>
+<body>
+	<div>
+		<canvas id="canvas" width="300" height="50"></canvas>
+		<canvas id="canvas2" width="500" height="100"></canvas>
+	</div>
+	<div>
+		<canvas id="canvas3" width="200" height="200"></canvas>
+		<canvas id="canvas4" width="300" height="300"></canvas>
+	</div>
+	
+</body>
+</html>
