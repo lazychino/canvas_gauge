@@ -1,5 +1,5 @@
 /*
- * gauge2.js
+ * canvasgauge.js
  * 
  * Copyright 2013 Pedro A. Melendez <lazy.chino@gmail.com>
  * 
