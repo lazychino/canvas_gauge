@@ -36,29 +36,19 @@ function __horizontal__( g ) {// updates drawing
 	
 	g.ctx.clearRect(0, 0, g.width, g.height); //clear canvas before drawing
 	
-	var text = String( Math.round(g.value*g.precision)/g.precision );
-	var textWidth = g.ctx.measureText( text ).width;
-	
 	g.ctx.fillStyle = g.bgColor;  // draw background rectangle
-	g.ctx.fillRect(g.textMax,
-					g.height/2-25,
-					g.width, 
-					g.height 
-					);
+	g.ctx.fillRect(0,
+				0,
+				g.width, 
+				g.height 
+				);
 	
 	g.ctx.fillStyle = g.color;    // draw value rectangle
-	g.ctx.fillRect(g.textMax,
-					g.height/2-25,
-					(g.value-g.min)/(g.max-g.min)*(g.width-g.textMax), 
-					g.height
-					);
-	
-	g.ctx.fillStyle = g.textColor;
-	g.ctx.textAlign = "end"; 
-	g.ctx.fillText( text, 
-					g.textMax, 
-					g.height
-					);
+	g.ctx.fillRect(0,
+				0,
+				(g.value-g.min)/(g.max-g.min)*(g.width-g.textMax), 
+				g.height
+				);
 }
 
 function __needle__( g ) {
