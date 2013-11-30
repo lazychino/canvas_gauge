@@ -20,13 +20,12 @@ I'm planning to make some more gauge types and enabled css to modify the gauges 
 </script>
 ```
 #####options:
-
-color: foreground color
-bgColor: background color
-textColor: gauge text color (currently only for needle gauge)
-time: time gauge take to update to new value
-range: {
-  min: lower bound value
+- color: foreground color
+- bgColor: background color
+- textColor: gauge text color (currently only for needle gauge)
+- time: time gauge take to update to new value
+- range: {
+  min: lower bound value,
   max: upper bound value
 }
-mode: gauge mode (default='bar', 'needle')
+- mode: gauge mode (default='bar', 'needle')
