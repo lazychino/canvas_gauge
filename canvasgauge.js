@@ -131,11 +131,11 @@ function Gauge( id, options ) {
 	//Variables
 	this.value = 0;
 	this.newValue = 0;
-	this.color = "#f00";
-	this.bgColor = "#000000";
-	this.textColor = "#FFFFFF";
-	this.precision = Math.pow(10,0);
-	this.time = 400;
+	this.color = options.color ? options.color : "#f00";
+	this.bgColor = options.bgColor ? options.bgColor : "#000000";
+	this.textColor = options.textColor ? options.textColor : "#FFFFFF";
+	this.precision = options.precision ? options.precision : Math.pow(10,0);
+	this.time = options.updateTime ? options.updateTime : 400;
 	
 	if( options.range !== undefined ) {
 		this.min = options.range.min;
@@ -146,12 +146,12 @@ function Gauge( id, options ) {
 		this.max = 100;
 	}
 
-	if ( options.mode !== undefined ) {
+	if ( options.mode === "needle" ) {
 		this.resolution = (this.max - this.min)/240;
 		this.radius = (Math.min(this.height, this.width)/2)*.9;
 		this.update = __needle__;
 	}
-	else {
+	else { // default "bar"
 		this.resolution = (this.max - this.min)/this.width;
 		this.ctx.font = String(this.height)+"px Arial";
 		this.textMax = this.ctx.measureText( _maxLength( this.max.toString(), this.min.toString() ) ).width;
