@@ -12,8 +12,11 @@ I'm planning to make some more gauge types and enabled css to modify the gauges 
 <script src='canvasgauge.js'></script>
 <canvas id="canvas_id" width="200" height="200"></canvas>
 <script>
-   var gauge2 = new Gauge('canvas_id', {options object}); // create gauge object
-   gauge2.draw( value );        // update gauge image (gauge is not draw until this functios is call)
+   // create gauge object
+   var gauge2 = new Gauge('canvas_id', {options object});
+   
+   // update gauge image (gauge is not draw until this functios is call)
+   gauge2.draw( value );        
 </script>
 ```
 #####options:
