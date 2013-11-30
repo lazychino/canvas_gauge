@@ -6,75 +6,97 @@
 	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
 	<meta name="author" content="Pedro A. Melendez" />
 	
-	<link rel="stylesheet" href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css"/> 
-	<script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="http://yandex.st/highlightjs/7.5/styles/github.min.css">
+	<script src="http://yandex.st/highlightjs/7.5/highlight.min.js"></script>
+	<script type="text/javascript">
+		hljs.tabReplace = '    '; // 4 spaces
+		hljs.initHighlightingOnLoad();
+	</script>
 	<script src='canvasgauge.js'></script>
 	
-	<script>
-		window.onload = function() {
-			var gauge1 = new Gauge("canvas1", { 'range': {'min':-50, 'max':50 } });
-			var gauge2 = new Gauge("canvas2");
-			var gauge3 = new Gauge("canvas3", {'mode':'needle', 'range': {'min':-30, 'max':30 } });
-			var gauge4 = new Gauge("canvas4", {'mode':'needle', 'range': {'min':0, 'max':140 } });
-			
-			function randomTest() {
-				gauge1.draw( Math.floor(Math.random()*100)-50 );
-				gauge2.draw( Math.floor(Math.random()*100) );
-				gauge3.draw( Math.floor(Math.random()*60)-30 );
-				gauge4.draw( Math.floor(Math.random()*140) );
-			}
-			
-			randomTest();
-			
-			var run = setInterval(randomTest, 5000);
-		};
-	</script>
 	<title>Canvas Guage alpha</title>
 </head>
 <body>
+	<a href="https://github.com/lazychino/canvas_gauge">
+	<img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png" alt="Fork me on GitHub">
+	</a>
 	<div class="container">
 		<div class="row">
-			<div class="span8">
+			<div class="col-md-8">
 				<p class="lead">This a live demo of the canvasgauge.js library</p>
 				<p class="lead">update every 5 seconds with random values</p>
 			</div>
-			<div class="span2 offset1">
-				<a class="btn" href="https://github.com/lazychino/canvas_gauge">code at GitHub</a>
-			</div>
 		</div>
 		<div>
-			<dl>
-				<dt>canvas 1</dt>
-				<dd><canvas id="canvas1" width="300" height="50"></canvas></dd>
-				<dt>canvas 2</dt>
-				<dd><canvas id="canvas2" width="500" height="100"></canvas></dd>
-				<dt>canvas 3</dt>
-				<dd><canvas id="canvas3" width="200" height="200"></canvas></dd>
-				<dt>canvas 4</dt>
-				<dd><canvas id="canvas4" width="300" height="300"></canvas></dd>
-			</dl>
-		</div>
-		<div>
-<pre class="prettyprint">
-window.onload = function() {
-	var gauge1 = new Gauge("canvas1", { 'range': {'min':-50, 'max':50 } });
+		<dl>
+			<dt>canvas 1</dt>
+			<dd>
+				<canvas id="canvas1" width="300" height="50"></canvas>
+				<script>
+					var gauge1 = new Gauge("canvas1", { 'color': "#0F0" ,'range': {'min':-50, 'max':50 } }); // gauge is not draw until Gauge.draw(value) runs; 
+				</script>
+				<div class="form-group">
+					<button onClick="gauge1.draw( Math.floor(Math.random()*100)-50 );" class="btn btn-primary">Press to Draw</button>
+				</div>
+<pre><code>&lt;canvas id="canvas1" width="300" height="50"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+	var gauge1 = new Gauge("canvas1", { 'color': "#0F0" ,'range': {'min':-50, 'max':50 } }); // gauge is not draw until Gauge.draw(value) runs; 
+&lt;/script&gt;
+&lt;div class="form-group"&gt;
+	&lt;button onClick="gauge1.draw( Math.floor(Math.random()*100)-50 );" class="btn btn-primary"&gt;Press to Draw&lt;/button&gt;
+&lt;/div&gt;
+</code></pre>
+			</dd>
+			<dt>canvas 2</dt>
+			<dd>
+				<canvas id="canvas2" width="500" height="100"></canvas>
+				<script>
+					var gauge2 = new Gauge("canvas2");
+					gauge2.draw( Math.floor(Math.random()*100) );
+					var run = setInterval(function() { gauge2.draw( Math.floor(Math.random()*100) ); }, 5000);
+				</script>
+
+<pre><code>&lt;canvas id="canvas2" width="500" height="100"&gt;&lt;/canvas&gt;
+&lt;script&gt;
 	var gauge2 = new Gauge("canvas2");
+	gauge2.draw( Math.floor(Math.random()*100) );
+	var run = setInterval(function() { gauge2.draw( Math.floor(Math.random()*100) ); }, 5000);
+&lt;/script&gt;
+</code></pre>
+				
+			</dd>
+			<dt>canvas 3</dt>
+			<dd><canvas id="canvas3" width="200" height="200"></canvas>
+				<script>
+						var gauge3 = new Gauge("canvas3", {'mode':'needle', 'range': {'min':-30, 'max':30 } });
+						gauge3.draw( Math.floor(Math.random()*60)-30 );
+						var run = setInterval(function() { gauge3.draw( Math.floor(Math.random()*60)-30 ); }, 5000);
+				</script>
+			<pre><code>&lt;canvas id="canvas3" width="200" height="200"&gt;&lt;/canvas&gt;
+&lt;script&gt;
 	var gauge3 = new Gauge("canvas3", {'mode':'needle', 'range': {'min':-30, 'max':30 } });
-	var gauge4 = new Gauge("canvas4", {'mode':'needle', 'range': {'min':0, 'max':140 } });
-	
-	function randomTest() {
-		gauge1.draw( Math.floor(Math.random()*100)-50 );
-		gauge2.draw( Math.floor(Math.random()*100) );
-		gauge3.draw( Math.floor(Math.random()*60)-30 );
-		gauge4.draw( Math.floor(Math.random()*140) );
-	}
-	
-	randomTest();
-	
-	var run = setInterval(randomTest, 5000);
-};
-</pre>
+	gauge3.draw( Math.floor(Math.random()*60)-30 );
+	var run = setInterval(function() { gauge3.draw( Math.floor(Math.random()*60)-30 ); }, 5000);
+&lt;/script&gt;</code></pre>
+			</dd>
+			<dt>canvas 4</dt>
+			<dd><canvas id="canvas4" width="300" height="300"></canvas>
+				<script>
+						var gauge4 = new Gauge("canvas4", {'mode':'needle', 'range': {'min':0, 'max':140 } });
+						gauge4.draw( Math.floor(Math.random()*140) );
+						var run = setInterval(function() { gauge4.draw( Math.floor(Math.random()*140) ); }, 5000);
+				</script>
+			<pre><code>&lt;canvas id="canvas4" width="300" height="300"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+    var gauge4 = new Gauge("canvas4", {'mode':'needle', 'range': {'min':0, 'max':140 } });
+    gauge4.draw( Math.floor(Math.random()*140) );
+    var run = setInterval(function() { gauge4.draw( Math.floor(Math.random()*140) ); }, 5000);
+&lt;/script&gt;</code></pre>
+			</dd>
+		</dl>
 		</div>
+
 	</div>
 </body>
 </html>
