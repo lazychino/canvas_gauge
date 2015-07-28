@@ -1,6 +1,8 @@
 #canvasgauge.js
 
-This is a library I made originaly to display sensor data on hardware projects. It can be use for anything you like and is written in pure Javascript. No dependencies!
+####NOTE: this project is not actively develop
+
+This is a library I made originally to display sensor data on hardware projects. It can be use for anything you like and is written in pure Javascript. No dependencies!
 
 Currently there only 2 types of gauges: needle gauge, and rectangle bar (horizontal movement),
 I'm planning to make some more gauge types and enabled css to modify the gauges look.
@@ -29,3 +31,11 @@ I'm planning to make some more gauge types and enabled css to modify the gauges 
   max: upper bound value
 }
 - mode: gauge mode (default='bar', 'needle')
+
+
+---
+
+
+The MIT License (MIT)
+
+Copyright (c) 2013-2015 Pedro A. Melendez
